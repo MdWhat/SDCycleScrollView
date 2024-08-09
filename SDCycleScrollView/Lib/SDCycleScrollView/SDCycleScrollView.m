@@ -488,7 +488,12 @@ NSString * const ID = @"SDCycleScrollViewCell";
     
     [super layoutSubviews];
     
-    _flowLayout.itemSize = self.frame.size;
+    if (!self.zoomType) {
+        _flowLayout.itemSize = self.frame.size;
+    } else {
+        _flowLayout.itemSize = CGSizeMake(MaxWidth, MaxHeight);
+    }
+//    _flowLayout.itemSize = self.frame.size;
     
     _mainView.frame = self.bounds;
     if (_mainView.contentOffset.x == 0 &&  _totalItemsCount) {
@@ -619,6 +624,17 @@ NSString * const ID = @"SDCycleScrollViewCell";
         cell.imageView.contentMode = self.bannerImageViewContentMode;
         cell.clipsToBounds = YES;
         cell.onlyDisplayText = self.onlyDisplayText;
+        cell.zoomType = self.zoomType;
+    }
+    
+    if (self.zoomType) {
+        if ([self currentIndex] == indexPath.item) {
+            cell.imageView.frame = CGRectMake(0, 0, MaxWidth, MaxHeight);
+        } else {
+            cell.imageView.frame = CGRectMake(0, 0, MinWidth, MinHeight);
+        }
+        
+        cell.imageView.center = cell.contentView.center;
     }
     
     return cell;
