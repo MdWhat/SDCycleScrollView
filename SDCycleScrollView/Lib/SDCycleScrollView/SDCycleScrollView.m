@@ -92,6 +92,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     _currentPageDotColor = [UIColor whiteColor];
     _pageDotColor = [UIColor lightGrayColor];
     _bannerImageViewContentMode = UIViewContentModeScaleToFill;
+    _itemSize = CGSizeMake(lScale(140), lScale(200));
     
     self.backgroundColor = [UIColor lightGrayColor];
     
@@ -491,7 +492,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     if (!self.zoomType) {
         _flowLayout.itemSize = self.frame.size;
     } else {
-        _flowLayout.itemSize = CGSizeMake(MaxWidth, MaxHeight);
+        _flowLayout.itemSize = CGSizeMake(_itemSize.width, _itemSize.height);
     }
 //    _flowLayout.itemSize = self.frame.size;
     
@@ -628,12 +629,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     }
     
     if (self.zoomType) {
-        if ([self currentIndex] == indexPath.item) {
-            cell.imageView.frame = CGRectMake(0, 0, MaxWidth, MaxHeight);
-        } else {
-            cell.imageView.frame = CGRectMake(0, 0, MinWidth, MinHeight);
-        }
-        
+        cell.imageView.frame = CGRectMake(0, 0, _itemSize.width, _itemSize.height);
         cell.imageView.center = cell.contentView.center;
     }
     

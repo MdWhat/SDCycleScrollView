@@ -28,12 +28,15 @@
  
  */
 
-#define MaxWidth 300
-#define MinWidth 250
-#define MaxHeight 200
-#define MinHeight 170
 #define Screen_Width [[UIScreen mainScreen] bounds].size.width
 #define Screen_Height [[UIScreen mainScreen] bounds].size.height
+
+#define lScale(s) (Screen_Width * (s / 375.0))
+
+//#define lWidth lScale(140)
+//#define lHeight lScale(200)
+
+
 
 #import <UIKit/UIKit.h>
 

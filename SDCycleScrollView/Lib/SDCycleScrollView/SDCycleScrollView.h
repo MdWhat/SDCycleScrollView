@@ -198,6 +198,8 @@ typedef enum {
 
 @property (assign, nonatomic) BOOL zoomType;
 
+@property(nonatomic, assign) CGSize itemSize;
+
 /** 滚动手势禁用（文字轮播较实用） */
 - (void)disableScrollGesture;
 
