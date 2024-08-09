@@ -33,11 +33,6 @@
 
 #define lScale(s) (Screen_Width * (s / 375.0))
 
-//#define lWidth lScale(140)
-//#define lHeight lScale(200)
-
-
-
 #import <UIKit/UIKit.h>
 
 @interface SDCollectionViewCell : UICollectionViewCell

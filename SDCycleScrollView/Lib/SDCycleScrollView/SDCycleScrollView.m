@@ -489,12 +489,11 @@ NSString * const ID = @"SDCycleScrollViewCell";
     
     [super layoutSubviews];
     
-    if (!self.zoomType) {
-        _flowLayout.itemSize = self.frame.size;
-    } else {
+    if (self.zoomType) {
         _flowLayout.itemSize = CGSizeMake(_itemSize.width, _itemSize.height);
+    } else {
+        _flowLayout.itemSize = self.frame.size;
     }
-//    _flowLayout.itemSize = self.frame.size;
     
     _mainView.frame = self.bounds;
     if (_mainView.contentOffset.x == 0 &&  _totalItemsCount) {
